@@ -34,7 +34,7 @@ export default function RootLayout({
     <html lang={lang} dir={dir} className={cairo.variable} suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes" />
         <title>المستشار القانوني الجزائري | Algerian Legal AI</title>
         <meta
           name="description"
@@ -42,8 +42,8 @@ export default function RootLayout({
         />
         <meta name="keywords" content="Algerian law, قانون جزائري, legal AI, مستشار قانوني, consultation, استشارة, Algeria, الجزائر" />
         <meta name="author" content="Algerian Legal AI" />
-        <meta name="theme-color" content="#0a1628" />
-        <meta name="color-scheme" content="dark" />
+        <meta name="theme-color" content="#1a5276" />
+        <meta name="color-scheme" content="light" />
         <meta property="og:title" content="المستشار القانوني الجزائري | Algerian Legal AI" />
         <meta property="og:description" content="Get instant legal consultations based on real Algerian legal texts using AI" />
         <meta property="og:type" content="website" />
@@ -54,10 +54,7 @@ export default function RootLayout({
         <meta name="twitter:description" content="Smart AI-powered legal consultations based on Algerian law" />
         <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>" />
       </head>
-      <body
-        className={`${cairo.className} antialiased flex flex-col min-h-screen`}
-        style={{ fontFamily: 'var(--font-cairo)' }}
-      >
+      <body className={`${cairo.className} antialiased flex flex-col min-h-screen bg-[var(--color-bg-primary)] text-[var(--color-text-primary)]`}>
         {children}
         <ToastProvider />
       </body>
