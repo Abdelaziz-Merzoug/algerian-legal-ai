@@ -1,6 +1,6 @@
 ﻿'use client';
 
-import { useState, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useTranslation } from '@/lib/i18n/useTranslation';
 import Input from './Input';
 import Pagination from './Pagination';
@@ -22,7 +22,7 @@ interface DataTableProps<T> {
     searchKey?: keyof T;
     pageSize?: number;
     emptyMessage?: string;
-    emptyIcon?: string;
+    emptyIcon?: React.ReactNode;
     isLoading?: boolean;
     actionColumn?: (item: T) => React.ReactNode;
     onRowClick?: (item: T) => void;
@@ -141,7 +141,7 @@ export default function DataTable<T extends Record<string, unknown>>({
             {/* Desktop Table */}
             {paginated.length === 0 ? (
                 <EmptyState
-                    icon={emptyIcon || '📭'}
+                    icon={emptyIcon}
                     title={emptyMessage || t.common.noResults}
                 />
             ) : (

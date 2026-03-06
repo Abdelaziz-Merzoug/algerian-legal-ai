@@ -221,16 +221,16 @@ export default function AdminContactPage() {
                                 </Button>
                                 {selectedMsg.status !== 'resolved' && (
                                     <Button variant="secondary" size="sm" onClick={() => handleStatusChange(selectedMsg.id, 'resolved')} isLoading={actionLoading === selectedMsg.id}>
-                                        ✅ {language === 'ar' ? 'تحديد كمحلول' : 'Mark Resolved'}
+                                        {language === 'ar' ? 'تحديد كمحلول' : 'Mark Resolved'}
                                     </Button>
                                 )}
                                 {selectedMsg.status !== 'spam' && (
                                     <Button variant="ghost" size="sm" onClick={() => handleStatusChange(selectedMsg.id, 'spam')} isLoading={actionLoading === selectedMsg.id}>
-                                        🚫 {language === 'ar' ? 'تحديد كسبام' : 'Mark Spam'}
+                                        {language === 'ar' ? 'تحديد كسبام' : 'Mark Spam'}
                                     </Button>
                                 )}
                                 <Button variant="danger" size="sm" onClick={() => handleDelete(selectedMsg.id)} isLoading={actionLoading === selectedMsg.id}>
-                                    🗑️ {language === 'ar' ? 'حذف' : 'Delete'}
+                                    {language === 'ar' ? 'حذف' : 'Delete'}
                                 </Button>
                             </div>
 

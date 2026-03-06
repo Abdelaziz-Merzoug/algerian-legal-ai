@@ -30,7 +30,7 @@ export default function AnnouncementBanner() {
     return (
         <div className="bg-gradient-to-r from-gold/20 via-gold/10 to-gold/20 border-b border-teal/30 relative">
             <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-center">
-                <span className="text-teal me-2">📢</span>
+                <svg className="w-4 h-4 text-teal me-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" /></svg>
                 <p className="text-sm text-teal font-medium text-center">{announcement}</p>
                 <button
                     onClick={() => setIsVisible(false)}

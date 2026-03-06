@@ -26,7 +26,9 @@ export default function HeroSection() {
             <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
                 {/* Badge */}
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-teal-light border border-teal/20 rounded-full text-sm text-teal mb-8 animate-fade-in">
-                    <span>🇩🇿</span>
+                    <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    </svg>
                     <span>{t.landing.badge}</span>
                 </div>
 

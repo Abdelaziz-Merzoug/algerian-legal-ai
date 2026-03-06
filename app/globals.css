@@ -3,63 +3,69 @@
 /* ========================================
    DESIGN SYSTEM — Algerian Legal AI
    Professional Legal / Government Style
-   Deep Blue + Muted Gold
+   Deep Teal + Muted Gold (inspired by droit.mjustice.gov.dz)
    ======================================== */
 
 @theme inline {
-  /* === PRIMARY: Deep Blue === */
-  --color-primary: #1a5276;
-  --color-primary-hover: #1f618d;
-  --color-primary-light: #eaf2fb;
-  --color-primary-dark: #154360;
+  /* === PRIMARY: Deep Teal === */
+  --color-primary: #0d6e6e;
+  --color-primary-hover: #0a5a5a;
+  --color-primary-light: #e6f3f3;
+  --color-primary-dark: #084e4e;
 
   /* === ACCENT: Muted Gold === */
-  --color-accent: #c9a84c;
-  --color-accent-hover: #b8993b;
-  --color-accent-light: #fdf6e3;
+  --color-accent: #c9a227;
+  --color-accent-hover: #b8912a;
+  --color-accent-light: #f5edcc;
 
   /* === SURFACE / BACKGROUNDS === */
-  --color-bg-primary: #FFFFFF;
-  --color-bg-secondary: #F8F9FA;
+  --color-bg-primary: #f8f9fa;
+  --color-bg-secondary: #f0f4f4;
   --color-bg-card: #FFFFFF;
-  --color-bg-card-hover: #F0F4F8;
-  --color-bg-sidebar: #1a2332;
+  --color-bg-card-hover: #f0f4f4;
+  --color-bg-sidebar: #1a1a2e;
   --color-bg-header: #FFFFFF;
+  --color-bg-navbar: #0d6e6e;
+  --color-bg-footer: #1a1a2e;
+  --color-bg-hero: #f0f4f4;
 
   /* === LEGACY ALIASES (keep for backward compat) === */
   /* These map old teal/navy/gold names to new tokens */
-  --color-teal: #1a5276;
-  --color-teal-hover: #1f618d;
-  --color-teal-light: #eaf2fb;
-  --color-gold: #c9a84c;
-  --color-gold-hover: #b8993b;
-  --color-gold-light: #fdf6e3;
-  --color-navy: #1a2332;
-  --color-navy-secondary: #F8F9FA;
+  --color-teal: #0d6e6e;
+  --color-teal-hover: #0a5a5a;
+  --color-teal-light: #e6f3f3;
+  --color-gold: #c9a227;
+  --color-gold-hover: #b8912a;
+  --color-gold-light: #f5edcc;
+  --color-navy: #1a1a2e;
+  --color-navy-secondary: #f8f9fa;
 
   /* === TEXT === */
-  --color-text-primary: #1a2332;
-  --color-text-secondary: #4a5568;
-  --color-text-muted: #718096;
+  --color-text-primary: #1a1a2e;
+  --color-text-secondary: #4a4a5a;
+  --color-text-muted: #8a8a9a;
   --color-text-on-dark: #FFFFFF;
   --color-text-white: #FFFFFF;
-  --color-text-light: #4a5568;
-  --color-text-dark: #1a2332;
+  --color-text-light: #4a4a5a;
+  --color-text-dark: #1a1a2e;
+  --color-text-on-primary: #FFFFFF;
+  --color-text-body: #4a4a5a;
 
   /* === BORDERS === */
-  --color-border: #dee2e6;
-  --color-border-light: #e9ecef;
-  --color-border-accent: #1a5276;
+  --color-border: #e2e8f0;
+  --color-border-light: #e2e8f0;
+  --color-border-hover: #cbd5e1;
+  --color-border-accent: #0d6e6e;
 
   /* === STATUS === */
-  --color-success: #28a745;
-  --color-error: #dc3545;
-  --color-warning: #ffc107;
-  --color-info: #17a2b8;
+  --color-success: #10b981;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
+  --color-info: #3b82f6;
 
   /* === SURFACE DARK (sidebar, footer) === */
-  --color-surface-dark: #1a2332;
-  --color-surface-light: #F8F9FA;
+  --color-surface-dark: #1a1a2e;
+  --color-surface-light: #f8f9fa;
 
   /* === FONTS === */
   --font-cairo: 'Cairo', sans-serif;
@@ -379,5 +385,5 @@ body {
 
 .card:hover {
   border-color: var(--color-primary);
-  box-shadow: 0 4px 8px rgba(26, 82, 118, 0.1);
+  box-shadow: 0 4px 8px rgba(13, 110, 110, 0.1);
 }

@@ -78,7 +78,7 @@ export default function ChatPage() {
                         <div className="flex items-center justify-end px-4 py-2 border-b border-border-light">
                             <button
                                 onClick={() => {
-                                    const text = messages.map((m) => `${m.role === 'user' ? '👤 You' : '⚖️ AI'}: ${m.content}`).join('\n\n');
+                                    const text = messages.map((m) => `${m.role === 'user' ? 'You' : 'AI'}: ${m.content}`).join('\n\n');
                                     const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
                                     const url = URL.createObjectURL(blob);
                                     const a = document.createElement('a');
@@ -90,7 +90,8 @@ export default function ChatPage() {
                                 className="text-xs text-text-light hover:text-teal transition-colors flex items-center gap-1"
                                 title="Export"
                             >
-                                📥 {language === 'ar' ? 'تصدير' : 'Export'}
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                                {language === 'ar' ? 'تصدير' : 'Export'}
                             </button>
                         </div>
                     )}

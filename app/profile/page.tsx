@@ -228,7 +228,8 @@ export default function ProfilePage() {
                     <Card padding="lg">
                         <div className="border border-error/30 rounded-xl p-4 bg-error/5 space-y-3">
                             <h3 className="text-sm font-bold text-error flex items-center gap-2">
-                                ⚠️ {language === 'ar' ? 'منطقة الخطر — حذف الحساب' : 'Danger Zone — Delete Account'}
+                                <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                                {language === 'ar' ? 'منطقة الخطر — حذف الحساب' : 'Danger Zone — Delete Account'}
                             </h3>
                             <p className="text-xs text-text-secondary">
                                 {language === 'ar'
@@ -248,7 +249,7 @@ export default function ProfilePage() {
                                 isLoading={isDeletingAccount}
                                 disabled={deleteConfirm !== 'DELETE'}
                             >
-                                🗑️ {language === 'ar' ? 'حذف حسابي نهائياً' : 'Permanently Delete My Account'}
+                                {language === 'ar' ? 'حذف حسابي نهائياً' : 'Permanently Delete My Account'}
                             </Button>
                         </div>
                     </Card>

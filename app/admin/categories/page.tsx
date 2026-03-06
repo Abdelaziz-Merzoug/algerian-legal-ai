@@ -34,7 +34,7 @@ export default function AdminCategoriesPage() {
     const [deleteLoading, setDeleteLoading] = useState<string | null>(null);
 
     const [form, setForm] = useState({
-        name_ar: '', name_en: '', description_ar: '', description_en: '', icon: '📄', display_order: 0,
+        name_ar: '', name_en: '', description_ar: '', description_en: '', icon: 'document', display_order: 0,
     });
 
     const fetchCategories = useCallback(async () => {
@@ -52,7 +52,7 @@ export default function AdminCategoriesPage() {
 
     const openAdd = () => {
         setEditingCategory(null);
-        setForm({ name_ar: '', name_en: '', description_ar: '', description_en: '', icon: '📄', display_order: categories.length });
+        setForm({ name_ar: '', name_en: '', description_ar: '', description_en: '', icon: 'document', display_order: categories.length });
         setModalOpen(true);
     };
 
@@ -63,7 +63,7 @@ export default function AdminCategoriesPage() {
             name_en: cat.name_en || '',
             description_ar: cat.description_ar || cat.description || '',
             description_en: cat.description_en || '',
-            icon: cat.icon || '📄',
+            icon: cat.icon || 'document',
             display_order: cat.display_order || 0,
         });
         setModalOpen(true);
@@ -150,7 +150,10 @@ export default function AdminCategoriesPage() {
                         {categories.length} {language === 'ar' ? 'تصنيف' : 'categories'}
                     </p>
                 </div>
-                <Button size="sm" onClick={openAdd}>➕ {t.admin.addCategory}</Button>
+                <Button size="sm" onClick={openAdd}>
+                    <svg className="w-4 h-4 me-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4v16m8-8H4" /></svg>
+                    {t.admin.addCategory}
+                </Button>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -158,7 +161,9 @@ export default function AdminCategoriesPage() {
                     <Card key={cat.id} padding="md" hover>
                         <div className="flex items-start justify-between mb-3">
                             <div className="flex items-center gap-2">
-                                <span className="text-3xl">{cat.icon}</span>
+                                <div className="w-10 h-10 rounded-lg bg-teal/10 flex items-center justify-center text-teal text-sm font-bold">
+                                    {(cat.name_ar || cat.name || '').charAt(0)}
+                                </div>
                                 {cat.display_order !== undefined && (
                                     <span className="text-xs text-text-muted bg-bg-secondary px-2 py-0.5 rounded">#{idx + 1}</span>
                                 )}
@@ -169,20 +174,30 @@ export default function AdminCategoriesPage() {
                                     disabled={idx === 0}
                                     className="p-1.5 rounded-lg hover:bg-bg-secondary text-text-muted hover:text-teal transition-colors disabled:opacity-30"
                                     title={language === 'ar' ? 'نقل لأعلى' : 'Move Up'}
-                                >▲</button>
+                                >
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" /></svg>
+                                </button>
                                 <button
                                     onClick={() => moveCategory(cat, 'down')}
                                     disabled={idx === sortedCategories.length - 1}
                                     className="p-1.5 rounded-lg hover:bg-bg-secondary text-text-muted hover:text-teal transition-colors disabled:opacity-30"
                                     title={language === 'ar' ? 'نقل لأسفل' : 'Move Down'}
-                                >▼</button>
-                                <button onClick={() => openEdit(cat)} className="p-1.5 rounded-lg hover:bg-bg-secondary text-text-muted hover:text-teal transition-colors">✏️</button>
+                                >
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                                </button>
+                                <button onClick={() => openEdit(cat)} className="p-1.5 rounded-lg hover:bg-bg-secondary text-text-muted hover:text-teal transition-colors">
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+                                </button>
                                 <button
                                     onClick={() => handleDelete(cat)}
                                     disabled={deleteLoading === cat.id}
                                     className="p-1.5 rounded-lg hover:bg-bg-secondary text-text-muted hover:text-error transition-colors"
                                 >
-                                    {deleteLoading === cat.id ? '⏳' : '🗑️'}
+                                    {deleteLoading === cat.id ? (
+                                        <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
+                                    ) : (
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                                    )}
                                 </button>
                             </div>
                         </div>
@@ -193,7 +208,7 @@ export default function AdminCategoriesPage() {
                         {cat.document_count !== undefined && cat.document_count > 0 && (
                             <div className="mt-3">
                                 <Badge variant="gold">
-                                    📄 {cat.document_count} {language === 'ar' ? 'وثيقة' : 'documents'}
+                                    {cat.document_count} {language === 'ar' ? 'وثيقة' : 'documents'}
                                 </Badge>
                             </div>
                         )}
@@ -208,7 +223,6 @@ export default function AdminCategoriesPage() {
             {/* Add/Edit Modal */}
             <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} title={editingCategory ? t.admin.editCategory : t.admin.addCategory} maxWidth="lg">
                 <div className="space-y-4">
-                    <Input label={language === 'ar' ? 'الأيقونة' : 'Icon'} value={form.icon} onChange={(e) => setForm({ ...form, icon: e.target.value })} placeholder="📄" />
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <Input label={language === 'ar' ? 'الاسم (عربي)' : 'Name (Arabic)'} value={form.name_ar} onChange={(e) => setForm({ ...form, name_ar: e.target.value })} placeholder="اسم التصنيف" />
                         <Input label={language === 'ar' ? 'الاسم (إنجليزي)' : 'Name (English)'} value={form.name_en} onChange={(e) => setForm({ ...form, name_en: e.target.value })} placeholder="Category name" />
