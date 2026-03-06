@@ -47,7 +47,7 @@ export default function Navbar() {
           : 'bg-white'
       }`}
       role="navigation"
-      aria-label={t.common.mainNavigation || 'Main navigation'}
+      aria-label="Main navigation"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between md:h-20">
@@ -110,7 +110,7 @@ export default function Navbar() {
           <button
             className="rounded-lg p-2 text-gray-700 transition-colors hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary)] md:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? t.common.closeMenu || 'Close menu' : t.common.openMenu || 'Open menu'}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
           >
@@ -133,7 +133,7 @@ export default function Navbar() {
           id="mobile-menu"
           className="animate-slide-down border-t border-gray-200 bg-white md:hidden"
           role="navigation"
-          aria-label={t.common.mobileNavigation || 'Mobile navigation'}
+          aria-label="Mobile navigation"
         >
           <div className="space-y-1 px-4 py-4">
             <Link
