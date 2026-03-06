@@ -8,15 +8,99 @@ import { useTranslation } from '@/lib/i18n/useTranslation';
 import LanguageToggle from '@/components/layout/LanguageToggle';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 
-const navItems = [
-    { href: '/admin', icon: '📊', key: 'dashboard' as const },
-    { href: '/admin/categories', icon: '📁', key: 'categories' as const },
-    { href: '/admin/laws', icon: '📚', key: 'laws' as const },
-    { href: '/admin/users', icon: '👥', key: 'users' as const },
-    { href: '/admin/feedback', icon: '💬', key: 'feedback' as const },
-    { href: '/admin/contact', icon: '✉️', label_ar: 'رسائل التواصل', label_en: 'Contact' },
-    { href: '/admin/analytics', icon: '📈', label_ar: 'التحليلات', label_en: 'Analytics' },
-    { href: '/admin/settings', icon: '⚙️', label_ar: 'إعدادات المنصة', label_en: 'Settings' },
+// SVG icon components for admin sidebar
+function DashboardIcon() {
+    return (
+        <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 5a1 1 0 011-1h4a1 1 0 011 1v5a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm10 0a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zm10-3a1 1 0 011-1h4a1 1 0 011 1v7a1 1 0 01-1 1h-4a1 1 0 01-1-1v-7z" />
+        </svg>
+    );
+}
+function FolderIcon() {
+    return (
+        <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V7z" />
+        </svg>
+    );
+}
+function BookIcon() {
+    return (
+        <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+    );
+}
+function UsersNavIcon() {
+    return (
+        <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+    );
+}
+function MessageSquareIcon() {
+    return (
+        <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+        </svg>
+    );
+}
+function MailIcon() {
+    return (
+        <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+    );
+}
+function ChartIcon() {
+    return (
+        <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+    );
+}
+function SettingsIcon() {
+    return (
+        <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+    );
+}
+function LockNavIcon() {
+    return (
+        <svg className="w-12 h-12 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+    );
+}
+
+type NavKey = 'dashboard' | 'categories' | 'laws' | 'users' | 'feedback';
+
+interface NavItemWithKey {
+    href: string;
+    Icon: () => React.JSX.Element;
+    key: NavKey;
+}
+interface NavItemWithLabel {
+    href: string;
+    Icon: () => React.JSX.Element;
+    label_ar: string;
+    label_en: string;
+}
+type NavItem = NavItemWithKey | NavItemWithLabel;
+
+function isNavItemWithKey(item: NavItem): item is NavItemWithKey {
+    return 'key' in item;
+}
+
+const navItems: NavItem[] = [
+    { href: '/admin', Icon: DashboardIcon, key: 'dashboard' },
+    { href: '/admin/categories', Icon: FolderIcon, key: 'categories' },
+    { href: '/admin/laws', Icon: BookIcon, key: 'laws' },
+    { href: '/admin/users', Icon: UsersNavIcon, key: 'users' },
+    { href: '/admin/feedback', Icon: MessageSquareIcon, key: 'feedback' },
+    { href: '/admin/contact', Icon: MailIcon, label_ar: 'رسائل التواصل', label_en: 'Contact' },
+    { href: '/admin/analytics', Icon: ChartIcon, label_ar: 'التحليلات', label_en: 'Analytics' },
+    { href: '/admin/settings', Icon: SettingsIcon, label_ar: 'إعدادات المنصة', label_en: 'Settings' },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -31,7 +115,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         return (
             <div className="min-h-screen bg-bg-primary flex items-center justify-center p-4">
                 <div className="text-center space-y-4">
-                    <div className="text-5xl">🔒</div>
+                    <LockNavIcon />
                     <h1 className="text-xl font-bold text-text-primary">{t.errors.unauthorized}</h1>
                     <Link href="/" className="text-teal hover:text-teal-hover transition-colors">
                         {t.common.home}
@@ -64,6 +148,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 <nav className="flex-1 p-3 space-y-1">
                     {navItems.map((item) => {
                         const isActive = pathname === item.href;
+                        const label = isNavItemWithKey(item)
+                            ? t.admin[item.key]
+                            : (language === 'ar' ? item.label_ar : item.label_en);
                         return (
                             <Link
                                 key={item.href}
@@ -74,8 +161,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                                     : 'text-white/70 hover:text-white hover:bg-white/10 border border-transparent'
                                     }`}
                             >
-                                <span>{item.icon}</span>
-                                <span>{'key' in item && item.key ? t.admin[item.key] : (language === 'ar' ? (item as { label_ar?: string }).label_ar : (item as { label_en?: string }).label_en)}</span>
+                                <item.Icon />
+                                <span>{label}</span>
                             </Link>
                         );
                     })}

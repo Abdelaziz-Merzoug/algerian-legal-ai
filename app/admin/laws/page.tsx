@@ -249,10 +249,12 @@ export default function AdminLawsPage() {
                 <div className="flex gap-2">
                     <input ref={fileInputRef} type="file" accept=".csv,.xlsx,.xls" onChange={handleFileUpload} className="hidden" />
                     <Button variant="secondary" onClick={() => fileInputRef.current?.click()}>
-                        📥 {language === 'ar' ? 'استيراد CSV/Excel' : 'Import CSV/Excel'}
+                        <svg className="w-4 h-4 me-1.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                        {language === 'ar' ? 'استيراد CSV/Excel' : 'Import CSV/Excel'}
                     </Button>
                     <Button variant="primary" onClick={() => { setEditLaw({ title: '', description: '', category_id: categories[0]?.id || '', document_type: 'law' }); setEditOpen(true); }}>
-                        ➕ {language === 'ar' ? 'إضافة قانون' : 'Add Law'}
+                        <svg className="w-4 h-4 me-1.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4v16m8-8H4" /></svg>
+                        {language === 'ar' ? 'إضافة قانون' : 'Add Law'}
                     </Button>
                 </div>
             </div>
@@ -264,7 +266,7 @@ export default function AdminLawsPage() {
                         placeholder={language === 'ar' ? 'بحث في القوانين...' : 'Search laws...'}
                         value={searchQuery}
                         onChange={e => setSearchQuery(e.target.value)}
-                        icon={<span className="text-sm">🔍</span>}
+                        icon={<svg className="w-4 h-4 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>}
                     />
                 </div>
                 <select
@@ -349,21 +351,25 @@ export default function AdminLawsPage() {
                                         {actionMenuId === law.id && (
                                             <div className="absolute end-4 top-full mt-1 z-20 bg-white border border-border rounded-xl shadow-lg py-1 min-w-[180px]">
                                                 <button onClick={() => { setEditLaw(law); setEditOpen(true); setActionMenuId(null); }} className="w-full text-start px-4 py-2 text-sm hover:bg-bg-secondary transition-colors flex items-center gap-2">
-                                                    ✏️ {language === 'ar' ? 'تعديل' : 'Edit'}
+                                                    <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+                                                    {language === 'ar' ? 'تعديل' : 'Edit'}
                                                 </button>
                                                 {law.status !== 'active' && (
                                                     <button onClick={() => handleStatusChange(law.id, 'active')} className="w-full text-start px-4 py-2 text-sm hover:bg-bg-secondary transition-colors flex items-center gap-2">
-                                                        ✅ {language === 'ar' ? 'تفعيل' : 'Activate'}
+                                                        <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7" /></svg>
+                                                        {language === 'ar' ? 'تفعيل' : 'Activate'}
                                                     </button>
                                                 )}
                                                 {law.status !== 'archived' && (
                                                     <button onClick={() => handleStatusChange(law.id, 'archived')} className="w-full text-start px-4 py-2 text-sm hover:bg-bg-secondary transition-colors flex items-center gap-2">
-                                                        📦 {language === 'ar' ? 'أرشفة' : 'Archive'}
+                                                        <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" /></svg>
+                                                        {language === 'ar' ? 'أرشفة' : 'Archive'}
                                                     </button>
                                                 )}
                                                 <div className="border-t border-border-light my-1" />
                                                 <button onClick={() => handleDelete(law.id)} className="w-full text-start px-4 py-2 text-sm text-error hover:bg-error/5 transition-colors flex items-center gap-2">
-                                                    🗑️ {language === 'ar' ? 'حذف' : 'Delete'}
+                                                    <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                                                    {language === 'ar' ? 'حذف' : 'Delete'}
                                                 </button>
                                             </div>
                                         )}
