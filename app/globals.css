@@ -7,16 +7,16 @@
    ======================================== */
 
 @theme inline {
-  /* === PRIMARY: Deep Teal === */
-  --color-primary: #0d6e6e;
-  --color-primary-hover: #0a5a5a;
-  --color-primary-light: #e6f3f3;
-  --color-primary-dark: #084e4e;
+  /* === PRIMARY: Government Blue === */
+  --color-primary: #1a5276;
+  --color-primary-hover: #154360;
+  --color-primary-light: #ebf5fb;
+  --color-primary-dark: #103d52;
 
-  /* === ACCENT: Muted Gold === */
-  --color-accent: #c9a227;
-  --color-accent-hover: #b8912a;
-  --color-accent-light: #f5edcc;
+  /* === ACCENT: Government Gold === */
+  --color-accent: #c9a84c;
+  --color-accent-hover: #b8972e;
+  --color-accent-light: #f9f5e9;
 
   /* === SURFACE / BACKGROUNDS === */
   --color-bg-primary: #f8f9fa;
@@ -31,12 +31,12 @@
 
   /* === LEGACY ALIASES (keep for backward compat) === */
   /* These map old teal/navy/gold names to new tokens */
-  --color-teal: #0d6e6e;
-  --color-teal-hover: #0a5a5a;
-  --color-teal-light: #e6f3f3;
-  --color-gold: #c9a227;
-  --color-gold-hover: #b8912a;
-  --color-gold-light: #f5edcc;
+  --color-teal: #1a5276;
+  --color-teal-hover: #154360;
+  --color-teal-light: #ebf5fb;
+  --color-gold: #c9a84c;
+  --color-gold-hover: #b8972e;
+  --color-gold-light: #f9f5e9;
   --color-navy: #1a1a2e;
   --color-navy-secondary: #f8f9fa;
 
